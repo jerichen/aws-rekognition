@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 from settings import *
 from modules.read_excel import *
+from modules.rekognition import *
 import xlrd
 import xlwt
-import boto3
 
 if __name__ == "__main__":
     print('表單數量：', excel_data.nsheets)
@@ -12,10 +12,13 @@ if __name__ == "__main__":
 
     for i in range(1, sheet_0.nrows):
         print('第%s行第1列: %s' % (i, sheet_0.cell_value(i, 0)))
-        IMAGE_NAME = os.path.join(os.getenv('IMAGES_PATH'), sheet_0.cell_value(i, 0) + '.jpg')
-        print(IMAGE_NAME)
-        break
+        IMAGE_FILE = os.path.join(os.getenv('IMAGES_PATH'), sheet_0.cell_value(i, 0) + '.jpg')
+        print(IMAGE_FILE)
 
+        for label in detect_labels(IMAGE_FILE):
+            print(label['Name'])
+
+        break
 
     # 依 webid 取得照片
     # imageFile = 'images/TPG07329132.jpg'
