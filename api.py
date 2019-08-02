@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     for i in range(1, sheet_0.nrows):
         print('第%s行第1列: %s' % (i, sheet_0.cell_value(i, 0)))
-        IMAGE_NAME = os.path.join(os.environ.get('IMAGES_PATH'), sheet_0.cell_value(i, 0) + '.jpg')
+        IMAGE_NAME = os.path.join(os.getenv('IMAGES_PATH'), sheet_0.cell_value(i, 0) + '.jpg')
         print(IMAGE_NAME)
         break
 
