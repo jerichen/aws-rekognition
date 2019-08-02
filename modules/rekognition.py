@@ -17,13 +17,3 @@ def detect_labels(key, max_labels=10):
         except Exception as e:
             return e
 
-
-
-# def detect_labels(key, max_labels=10):
-#     with open(key, 'rb') as image:
-#         response = client.detect_labels(
-#             Image={
-#                 'Bytes': image.read()
-#             }
-#         )
-#         return response['Labels']
