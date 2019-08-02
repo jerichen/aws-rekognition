@@ -15,9 +15,15 @@ if __name__ == "__main__":
         IMAGE_FILE = os.path.join(os.getenv('IMAGES_PATH'), sheet_0.cell_value(i, 0) + '.jpg')
         print(IMAGE_FILE)
 
-        for label in detect_labels(IMAGE_FILE):
-            print(label['Name'])
+        labels = detect_labels(IMAGE_FILE)
+        if type(labels) is list:
+            for label in labels:
+                print(label['Name'])
+        else:
+            print('call api fail')
 
+        # for label in detect_labels(IMAGE_FILE):
+        #     print(label['Name'])
         break
 
     # 依 webid 取得照片
